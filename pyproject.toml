@@ -1,0 +1,16 @@
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+extend-exclude = [".pytest_tmp", ".ruff_cache", "release_comparison/out"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B"]
+# E501: legacy prose-dense lines; adopt gradually via the formatter.
+# B905: zip(strict=) churn across Spark/pandas interop helpers.
+ignore = ["E501", "B905"]
+
+[tool.pytest.ini_options]
+# Mirrors pytest.ini for tooling that reads pyproject first.
+
+[tool.ruff.lint.per-file-ignores]
+"final_verification/run_final_verification.py" = ["E402"]
