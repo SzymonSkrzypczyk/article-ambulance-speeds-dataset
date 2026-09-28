@@ -1,5 +1,7 @@
 # Kraków ambulance operating-speed dataset pipeline
 
+[![DOI](https://zenodo.org/badge/1392437376.svg)](https://doi.org/10.5281/zenodo.23016931)
+
 This repository contains the custom code used to generate, validate,
 visualise, test, and export the lean public dataset of ambulance operating
 speeds on road features in Kraków and its extended processing area.
