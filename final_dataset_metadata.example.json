@@ -1,0 +1,18 @@
+{
+  "title": "Ambulance operating speeds on road features in Kraków and the extended processing area, 2021–2023",
+  "version": "1.0.0",
+  "source_gold_version": "2.0.0",
+  "authors": [
+    {
+      "given-names": "Szymon",
+      "family-names": "Skrzypczyk",
+      "affiliation": "Faculty of Space Technologies, AGH University of Krakow"
+    },
+    {
+      "given-names": "Michał",
+      "family-names": "Lupa",
+      "affiliation": "Faculty of Space Technologies, AGH University of Krakow"
+    }
+  ],
+  "licence_text": "REPLACE WITH THE APPROVED TERMS FOR AMBULANCE-DERIVED AGGREGATES AND DOCUMENTATION.\n\nOpenStreetMap-derived road geometries and attributes: © OpenStreetMap contributors, Open Database License (ODbL) 1.0; https://www.openstreetmap.org/copyright.\n\nWeather-derived categories: identify the approved Open-Meteo and ERA5 attribution and licence terms."
+}
