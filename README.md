@@ -93,10 +93,10 @@ KARETKI_RUN_SPARK_TESTS=1 python -m pytest tests/test_spark_transforms.py
 ## Citation
 
 ```bibtex
-@software{skr zypczyk_krakow_ambulance_operating_speed_dataset_pipeline,
-  author = {Skrzypczyk, Szymon and Lupa, Michał},
-  title = {Kraków ambulance operating-speed dataset pipeline},
-  url = {https://github.com/SzymonSkrzypczyk/article-ambulance-speeds-dataset},
+@software{krakow_ambulance_operating_speed_dataset_pipeline,
+  author  = {Skrzypczyk, Szymon and Lupa, Michał},
+  title   = {Kraków ambulance operating-speed dataset pipeline},
+  url     = {https://github.com/SzymonSkrzypczyk/article-ambulance-speeds-dataset},
   version = {1.0.0}
 }
 ```
