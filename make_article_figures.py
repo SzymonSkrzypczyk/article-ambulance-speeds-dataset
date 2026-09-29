@@ -222,7 +222,6 @@ def figure_5_matching_diagnostics(reports_dir: Path, output: Path) -> None:
     axes[1].set_ylabel("Validation-sample records (%)")
     axes[1].set_xlabel("Candidate roads within matching radius")
     axes[1].set_title("Candidate ambiguity", loc="left", weight="bold")
-    axes[1].text(0.02, 0.96, "Internal diagnostic only; not manual ground truth", transform=axes[1].transAxes, va="top", fontsize=8, color=COLORS["dark_grey"])
     _save(figure, output)
 
 
