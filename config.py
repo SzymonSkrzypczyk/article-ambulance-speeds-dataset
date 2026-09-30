@@ -62,18 +62,14 @@ class PipelineConfig:
     GOLD_WEEK_CSV_PATH: Path = field(init=False)
     GOLD_TOD_PARQUET_PATH: Path = field(init=False)
     GOLD_TOD_CSV_PATH: Path = field(init=False)
-    # dev.2: first version carrying the hardening changes (canonical export
-    # ordering, weather boundary day, coordinate reason codes, dissolved
-    # compatibility lengths). dev.1 artifacts must not be reproducible under
-    # this identifier because published bytes and QA reports differ.
-    DATASET_VERSION: str = "2.0.0-dev.2"
+    DATASET_VERSION: str = "1.0.0"
     EXPECTED_START_DATE: str = "2021-01-01"
     EXPECTED_END_DATE: str = "2023-12-31"
 
     # Bounding box of the official Kraków municipality polygon (west, south,
     # east, north). Source: GUGiK Państwowy Rejestr Granic, municipality layer
-    # A03_Granice_gmin, TERYT 1261011, queried in EPSG:4326 on 2026-08-24.
-    # A bounding box includes some land outside the irregular city polygon.
+    # A03_Granice_gmin, TERYT 1261011, queried in EPSG:4326 on 2026-08-24
+    # A bounding box includes some land outside the irregular city polygon
     KRAKOW_BBOX: Tuple[float, float, float, float] = (
         19.792238,
         49.967665,
@@ -89,8 +85,7 @@ class PipelineConfig:
     AOI_BOUNDARY_IDENTIFIER: Optional[str] = "TERYT:1261011"
     AOI_BOUNDARY_RETRIEVED_DATE: Optional[str] = "2026-08-24"
     # A separate, deliberately broader processing envelope prevents telemetry
-    # near Kraków from being deleted merely because it lies outside the city.
-    # The city AOI remains available as an observation-level classification.
+    # near Kraków from being deleted merely because it lies outside the city
     ROAD_EXTRACTION_BBOX: Tuple[float, float, float, float] = (
         19.65,
         49.90,
@@ -132,8 +127,8 @@ class PipelineConfig:
     MAX_GAP_SECONDS: int = 30
     MIN_MOVEMENT_FOR_HEADING_METERS: float = 1.0
     # Provider telemetry is interpreted as centimetres per second.  This is the
-    # default published speed source pending provider confirmation; displacement
-    # remains available as an explicit, reproducible alternative.
+    # default published speed source
+    # displacement remains available as an explicit, reproducible alternative.
     SPEED_SOURCE: str = "gps_speed"
     GPS_SPEED_UNIT: str = "cm/s"
     GPS_SPEED_TO_KMH_FACTOR: float = 0.036
