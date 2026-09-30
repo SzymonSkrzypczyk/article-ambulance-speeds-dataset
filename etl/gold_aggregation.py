@@ -317,9 +317,7 @@ def process_gold_aggregation(
         raise FileNotFoundError(f"Silver dataset not found at {config.SILVER_DIR}")
 
     run_fingerprint = configuration_fingerprint(config.scientific_parameters())
-    # Gold's relational exports are expensive but deterministic.  Materialize
-    # their two common inputs in a stable work area so a failed export resumes
-    # at the export that failed, not at the Silver scan.
+
     work_root = Path(work_root_parent or config.GOLD_DIR.parent) / ".gold-work"
     if force_rebuild:
         shutil.rmtree(work_root, ignore_errors=True)
@@ -419,9 +417,6 @@ def process_gold_aggregation(
             configuration_fingerprint=run_fingerprint,
         )
 
-    # Profile QA uses the already-materialized portable tables. This preserves
-    # the reconciliation values without executing every expensive aggregation
-    # two additional times before export.
     silver = spark.read.parquet(str(config.SILVER_DIR))
     _write_gold_qa(spark, silver, observations, pandas_tables)
 

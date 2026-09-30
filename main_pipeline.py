@@ -172,12 +172,6 @@ def init_sedona_spark_session(
         .config("spark.sql.session.timeZone", config.SPARK_SESSION_TIMEZONE)
         .config("spark.pyspark.python", sys.executable)
         .config("spark.pyspark.driver.python", sys.executable)
-        # Sized for the 16 GiB reference laptop: a 6 GiB heap plus Sedona
-        # native allocations, Python, and the filesystem cache fit in physical
-        # RAM, preventing the swap-driven GC death spiral that previously froze
-        # the driver for 9+ minutes until macOS killed it. ExitOnOutOfMemoryError
-        # turns unrecoverable heap exhaustion into an immediate failure that
-        # resumable Bronze checkpoints can retry, instead of hanging for hours.
         .config("spark.driver.memory", driver_memory)
         .config("spark.executor.memory", executor_memory)
         .config(
@@ -194,9 +188,6 @@ def init_sedona_spark_session(
         .config("spark.sql.files.maxPartitionBytes", str(128 * 1024 * 1024))
         .config("spark.sql.shuffle.partitions", str(shuffle_partitions))
         .config("spark.default.parallelism", str(default_parallelism))
-        # macOS can report a short NIO transfer during a shuffle merge, causing
-        # Spark's `copyFileStreamNIO` assertion to abort the whole stage. Use
-        # the buffered stream path instead of FileChannel.transferTo.
         .config("spark.file.transferTo", "false")
         .config("spark.hadoop.mapreduce.fileoutputcommitter.algorithm.version", "2")
         .config(

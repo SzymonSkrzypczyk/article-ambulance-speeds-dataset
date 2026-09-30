@@ -543,8 +543,7 @@ def process_bronze_gps_logs(
             output_dir,
         )
 
-    # A deterministic work root lets a later invocation resume this run's
-    # checkpoints; mkdtemp-style unique roots would orphan them instead.
+    # A deterministic work root lets a later invocation resume this run's checkpoints
     work_root = Path(work_root_parent or output_dir.parent) / ".bronze-work"
     work_root.mkdir(parents=True, exist_ok=True)
     candidate_root = work_root / "candidates"
@@ -822,9 +821,7 @@ def process_bronze_gps_logs(
             )
             candidates = None
             for chunk in chunks:
-                # Batch checkpoints are separate Parquet roots, so Spark cannot
-                # infer one common partition base from a multi-path read. Add
-                # the known partition values after each isolated scan.
+                # Batch checkpoints are separate Parquet roots
                 chunk_candidates = (
                     spark.read.parquet(str(chunk))
                     .withColumn("year", F.lit(year_value))

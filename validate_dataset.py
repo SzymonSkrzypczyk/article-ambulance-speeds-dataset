@@ -61,7 +61,6 @@ REQUIRED_PROFILE_COLUMNS = set(COMMON_KEYS).union(
     }
 )
 
-# Controlled vocabularies realized by the pipeline (data_dictionary.md).
 # Column presence alone is not enough; a corrupted value such as
 # weather_category="SUNNY" must fail validation, not ship.
 ALLOWED_ENUM_VALUES = {

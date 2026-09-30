@@ -942,9 +942,6 @@ def process_silver_map_matching(
             step_is_complete(work_root, layer="silver", step=f"publish-{index:04d}", configuration_fingerprint=run_fingerprint)
             for index in range(1, len(direction_chunks) + 1)
         )
-        # With external-drive staging the work manifests live at the durable
-        # destination while the staged output is deliberately ephemeral.  In
-        # that case reuse transformations but republish all output chunks.
         can_resume_publish = has_recoverable_output and has_published_steps
         if config.SILVER_DIR.exists() and not can_resume_publish:
             shutil.rmtree(config.SILVER_DIR)

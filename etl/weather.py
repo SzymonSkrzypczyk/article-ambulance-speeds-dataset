@@ -205,10 +205,7 @@ def process_weather_data(force_rebuild: bool = False) -> Path:
     config.ensure_directories()
     retrieved_at = utc_now_iso()
     # The study period is defined on Warsaw-local dates but the request is
-    # interpreted in UTC. Fetching from EXPECTED_START_DATE itself leaves the
-    # Warsaw hour 00:00-00:59 of 1 January without a weather row, which the
-    # dev.1 build exhibited as 2,949 MISSING_WEATHER_HOUR observations.
-    # One extra leading UTC day guarantees full coverage of local 1 January.
+    # interpreted in UTC
     fetch_start = (
         date.fromisoformat(config.EXPECTED_START_DATE) - timedelta(days=1)
     ).isoformat()

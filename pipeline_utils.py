@@ -307,8 +307,7 @@ def layer_is_complete(
         isinstance(artifact, str) for artifact in manifest_artifacts
     ):
         return False
-    # Completion manifests use POSIX-relative paths so their contents are
-    # portable between Windows and POSIX hosts.
+    # Completion manifests use POSIX-relative paths
     expected_artifacts = [Path(artifact).as_posix() for artifact in required_artifacts]
     if expected_artifacts and set(manifest_artifacts) != set(expected_artifacts):
         return False
