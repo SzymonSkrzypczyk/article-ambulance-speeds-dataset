@@ -99,6 +99,6 @@ KARETKI_RUN_SPARK_TESTS=1 python -m pytest tests/test_spark_transforms.py
   author  = {Skrzypczyk, Szymon and Lupa, Michał},
   title   = {Kraków ambulance operating-speed dataset pipeline},
   url     = {https://github.com/SzymonSkrzypczyk/article-ambulance-speeds-dataset},
-  version = {1.0.0}
+  version = {1.0.1}
 }
 ```
